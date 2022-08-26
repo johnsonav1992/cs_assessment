@@ -1,0 +1,30 @@
+Results for the tinyArray
+insert 15.5 μs
+append 55.833 μs
+
+Results for the smallArray
+insert 28.958 μs
+append 61.708 μs
+
+Results for the mediumArray
+insert 189.209 μs
+append 122.875 μs
+
+Results for the largeArray
+insert 9.020917 ms
+append 545.417 μs
+
+Results for the extraLargeArray
+insert 839.51225 ms
+append 2.726208 ms
+
+        tiny        small       med         large           extra
+insert  15.5 μs     28.958 μs   189.209 μs  9.020917 ms     839.51225 ms
+
+append  55.833 μs   61.708 μs   122.875 μs  545.417 μs      2.726208 ms
+
+
+It appears that in most cases, the append function is much faster than the insert function. However, there is a small window where the insert function is, in fact, faster than the append. This is only for the two smallest array sizes, though, and ocne the array reaches a medium size, insert begins to become much slower. I would say that overall, append scales much better. 
+
+The reason that unshift is so much slower than push is because the computer must take whatever arbitrary number of array elements exist (could be a huge number) and then shift every other array element and index everything so that the new element can be added correctly. This takes much more time than simply adding a single array element on to the end of an array where the indexes of the other elements do not need to be calculated or changed. 
+
